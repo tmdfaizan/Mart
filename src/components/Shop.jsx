@@ -779,6 +779,12 @@ export default function Shop() {
                   </div>
                   <div className="d-flex justify-content-between align-items-center mt-2">
                     <h4 className="card-text mb-0">${product.price}</h4>
+                    <button
+                        className="btn rounded-circle" id='plus-icon'
+                        onClick={() => addtocart(product.id)}
+                      >
+                        <i className="fas fa-plus"></i>
+                      </button>
                   </div>
                 </div>
               </div>
