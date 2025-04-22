@@ -4,7 +4,7 @@ import { AppContext } from '../App';
 import { ToastContainer } from 'react-toastify';
 import productImg01 from "/src/assets/Images/double-sofa-01.png";
 import productImg02 from "/src/assets/Images/double-sofa-02.png";
-import productImg03 from "/src/assets/images/double-sofa-03.png";
+import productImg03 from "/src/assets/Images/double-sofa-03.png";
 import productImg05 from "/src/assets/Images/single-sofa-01.jpg";
 import productImg06 from "/src/assets/Images/single-sofa-02.jpg";
 
