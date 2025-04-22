@@ -18,7 +18,6 @@ import productImg07 from "/src/assets/Images/arm-chair-01.jpg";
 import productImg08 from "/src/assets/Images/arm-chair-02.jpg";
 import productImg09 from "/src/assets/Images/arm-chair-03.jpg";
 import productImg10 from "/src/assets/Images/arm-chair-01.jpg";
-import table from '/src/assets/Images/table.jpg';
 
 import phone01 from "/src/assets/Images/phone-01.jpg";
 import phone02 from "/src/assets/Images/phone-02.jpg";
