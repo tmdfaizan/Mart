@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { AppContext } from '../App';
 import { ToastContainer } from 'react-toastify';
 
@@ -924,53 +925,67 @@ export default function Productpage() {
         <div className="row gy-4">
           <h1 className="text-center w-100">Big Discount</h1>
           {discountProducts.map((product, index) => (
-            <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3">
-              <div className="card position-relative h-100 hover-card">
-                <div
-                  className="btn text-white position-absolute top-0 start-0"
-                  style={{
-                    backgroundColor: 'rgb(9, 121, 105)',
-                    borderRadius: '8px',
-                    margin: '8px',
-                    padding: '4px 8px',
-                  }}
-                >
-                  {product.discount}% off
-                </div>
-                <i
-                  className="far fa-heart text-dark position-absolute heart-icon"
-                  style={{
-                    fontSize: '20px',
-                    top: '8px',
-                    right: '16px',
-                  }}
-                ></i>
-                <img
-                  src={product.imgUrl}
-                  alt={product.productName}
-                  className="card-img-top"
-                  style={{ height: '150px', objectFit: 'contain' }}
-                />
-                <div className="card-body text-center">
-                  <h5 className="card-title">{product.productName.slice(0, 20)}</h5>
-                  <div>
-                    {[...Array(5)].map((_, index) => (
-                      <i key={index} className="fas fa-star" style={{ color: 'gold' }}></i>
-                    ))}
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center mt-2">
-                    <h4 className="card-text mb-0">${product.price}</h4>
-                    <button
-                      className="btn rounded-circle" id='plus-icon'
-                      onClick={() => addtocart(product.id)}
-                    >
-                      <i className="fas fa-plus"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+  <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3">
+    <div className="card position-relative h-100 hover-card">
+      {/* Wrap most of the card content in a Link */}
+      <Link
+        to="/shop/detail"
+        state={{ product }}
+        className="text-decoration-none text-dark"
+        style={{ display: 'block' }}
+      >
+        <div
+          className="btn text-white position-absolute top-0 start-0"
+          style={{
+            backgroundColor: 'rgb(9, 121, 105)',
+            borderRadius: '8px',
+            margin: '8px',
+            padding: '4px 8px',
+          }}
+        >
+          {product.discount}% off
+        </div>
+        <i
+          className="far fa-heart text-dark position-absolute heart-icon"
+          style={{
+            fontSize: '20px',
+            top: '8px',
+            right: '16px',
+          }}
+        ></i>
+        <img
+          src={product.imgUrl}
+          alt={product.productName}
+          className="card-img-top"
+          style={{ height: '150px', objectFit: 'contain' }}
+        />
+        <div className="card-body text-center">
+          <h5 className="card-title">{product.productName.slice(0, 20)}</h5>
+          <div>
+            {[...Array(5)].map((_, i) => (
+              <i key={i} className="fas fa-star" style={{ color: 'gold' }}></i>
+            ))}
+          </div>
+        </div>
+      </Link>
+
+      {/* Price and Add to Cart (outside the Link to prevent accidental navigation) */}
+      <div className="card-body pt-0">
+        <div className="d-flex justify-content-between align-items-center mt-2">
+          <h4 className="card-text mb-0">${product.price}</h4>
+          <button
+            className="btn rounded-circle"
+            id="plus-icon"
+            onClick={() => addtocart(product.id)}
+          >
+            <i className="fas fa-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+))}
+
         </div>
 
         {/* New Arrivals Section */}

@@ -33,13 +33,15 @@ import wireless04 from "/src/assets/Images/wireless-04.png";
 
 import { Link } from 'react-router-dom';
 import { AppContext } from '../App';
+import { ToastContainer } from 'react-toastify';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 
 
 export default function Shop() {
-  const { products, setProducts } = useContext(AppContext);
+  const { products, setProducts, addtocart } = useContext(AppContext);
   const [search, setSearch] = useState('')
   const [change, setChange] = useState('sofa')
   const handleSearch = (e) => {
@@ -644,6 +646,14 @@ export default function Shop() {
   }, [setProducts])
   return (
     <div className="container-fluid p-0" style={{ marginTop: '100px' }}>
+       <ToastContainer
+              position="top-right"
+              autoClose={1000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+            />
       <div
         id="ctn"
         className="d-flex justify-content-center align-items-center text-black"
@@ -781,7 +791,10 @@ export default function Shop() {
                     <h4 className="card-text mb-0">${product.price}</h4>
                     <button
                         className="btn rounded-circle" id='plus-icon'
-                        onClick={() => addtocart(product.id)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          addtocart(product.id);
+                        }}
                       >
                         <i className="fas fa-plus"></i>
                       </button>
